@@ -1,2 +1,2 @@
-# Successful-Submissions-On-LeetCode
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub).
+* Here is all my successful submissions on Leetcode. 
+* Successful submissions are automatically pushed to this repository.
