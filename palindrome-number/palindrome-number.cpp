@@ -1,12 +1,13 @@
 class Solution {
 public:
-   bool isPalindrome(int x){
-        string a = to_string(x);
-        string b = a;
-        reverse(a.begin(),a.end());
-        if(a == b){
-            return true;
+     bool isPalindrome(int x) {
+        if(x<0|| (x!=0 &&x%10==0)) return false;
+        int sum=0;
+        while(x > sum)
+        {
+            sum = sum*10+x%10;
+            x = x/10;
         }
-        return false;
+        return (x==sum)||(x==sum/10);
     }
 };
