@@ -14,6 +14,7 @@ public:
                a = GetString(a);
                //cout << a << endl;
                mini = min(mini,a);
+               //cout << a << endl;
            } 
            return mini;
         }
