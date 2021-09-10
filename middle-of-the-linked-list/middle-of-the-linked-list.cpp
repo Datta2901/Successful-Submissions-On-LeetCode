@@ -8,6 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// O(n)
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
@@ -29,3 +30,17 @@ public:
         return temp;
     }
 };
+
+// O(n/2)
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode *fast = head,*slow = head;
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+};
+
