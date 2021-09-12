@@ -1,18 +1,13 @@
-class Solution{
-    public:
-        int firstUniqChar(string s) {
-            map<char,int>fre;
-            for(auto i : s){
-                fre[i]++;
-            }
-            int count = 0;
-            for(auto i : s){
-                // cout << i.first  << " " << i.second << endl;
-                if(fre[i] == 1){
-                    return count;
-                }
-                count++;
-            }
-            return -1;
-        }
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        vector<int> fre(26,0);
+		for(char c : s) 
+            fre[c - 'a']++;
+		for(int i = 0; i < s.length(); i++){
+			if(fre[s[i] - 'a'] == 1) 
+                return i;
+		}
+		return -1;
+    }
 };
