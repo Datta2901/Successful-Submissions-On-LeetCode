@@ -1,34 +1,34 @@
 class Solution {
 public:
-   vector<vector<int>> threeSum(vector<int>& nums) {
-	std::vector<vector<int>> result;
-	if (nums.empty()) {
-		return result;
-	}
-
-	std::size_t n_size = nums.size();
-	std::sort(nums.begin(), nums.end());
-	for (int i = 0; i < n_size; ++i) {
-		if (nums[i] > 0) break;
-		if (i > 0 and nums[i] == nums[i-1]) continue;
-
-		int left = i+1, right = n_size - 1;
-		while (left < right) {
-			int sum = nums[i] + nums[left] + nums[right];
-			if (sum < 0) {
-				++left;
-			} else if (sum > 0) {
-				--right;
-			} else {
-				result.push_back({nums[i], nums[left], nums[right]});
-				int last_left = nums[left], last_right = nums[right];
+    vector<vector<int>> threeSum(vector<int>& num) {
+        vector<vector<int>> res; 
+        sort(num.begin(), num.end()); 
+        
+        for (int i = 0; i < (int)(num.size())-2; i++) {
+            
+            if (i == 0 || (i > 0 && num[i] != num[i-1])) {
                 
-				while (left < right && nums[left] == last_left) ++left;
-				while (left < right && nums[right] == last_right) --right;
-			}
-		}
-
-	}
-	return result;
-}
+                int lo = i+1, hi = (int)(num.size())-1, sum = 0 - num[i];
+                
+                while (lo < hi) {
+                    if (num[lo] + num[hi] == sum) {
+                        
+                        vector<int> temp; 
+                        temp.push_back(num[i]); 
+                        temp.push_back(num[lo]); 
+                        temp.push_back(num[hi]); 
+                        res.push_back(temp);
+                        
+                        while (lo < hi && num[lo] == num[lo+1]) lo++;
+                        while (lo < hi && num[hi] == num[hi-1]) hi--;
+                        
+                        lo++; hi--;
+                    } 
+                    else if (num[lo] + num[hi] < sum) lo++;
+                    else hi--;
+               }
+            }
+        }
+        return res;
+    }
 };
