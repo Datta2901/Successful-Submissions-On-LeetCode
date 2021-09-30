@@ -1,17 +1,19 @@
-// Using Bit manupulation
+// BackTracking
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        int size = 1 << nums.size();
-        vector<vector<int>> answer(size);
-        for(int i = 0; i < size; i++){
-            for(int j = 0; j < nums.size(); j++){
-                // checking if jth bit is set or not
-                if(i & (1 << j)){
-                    answer[i].push_back(nums[j]);
-                }
-            }
+    vector<vector<int> > answer;
+    void BackTrack(int start,vector<int> &sub,vector<int>& nums){
+        answer.push_back(sub);
+        for(int i = start; i < nums.size(); i++){
+            sub.push_back(nums[i]);
+            BackTrack(i + 1,sub,nums);
+            sub.pop_back();
         }
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        vector<int>sub;
+        BackTrack(0,sub,nums);
         return answer;
     }
 };
