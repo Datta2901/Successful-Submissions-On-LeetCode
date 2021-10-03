@@ -10,10 +10,6 @@ class Solution{
                 answer = max(answer, i + nums[i]);
                 if(answer == i){
                     return false;
-                }else{
-                    if(answer >= size){
-                        return true;
-                    }
                 }
             }
             return true;
