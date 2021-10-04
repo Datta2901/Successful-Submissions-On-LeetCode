@@ -7,6 +7,7 @@ public:
                 i = i + 2;
                 count++;
             }
+            
         }
         return count;
     }
