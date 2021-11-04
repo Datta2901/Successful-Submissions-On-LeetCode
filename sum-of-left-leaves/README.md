@@ -1,3 +1,4 @@
+[Discussion Post (created on 4/10/2021 at 13:50)](https://leetcode.com/problems/sum-of-left-leaves/discuss/1558787/Faster-that-100-of-C%2B%2B-sol-oror-EASY-APPROACH-oror-Recursiveororwell-commented)  
 <h2>404. Sum of Left Leaves</h2><h3>Easy</h3><hr><div><p>Given the <code>root</code> of a binary tree, return the sum of all left leaves.</p>
 
 <p>&nbsp;</p>
