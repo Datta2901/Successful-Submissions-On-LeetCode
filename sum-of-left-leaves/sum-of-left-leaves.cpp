@@ -10,19 +10,17 @@
  * };
  */
 class Solution {
-public:
-    
-    int CountLeftLeaves(TreeNode* root){
+public:    
+    int sumOfLeftLeaves(TreeNode* root) {
+        //Base condition         
         if(root == NULL){
             return 0;
         }
+        // If we find Left node we simply traverse right child of the present node
         if(root->left && root->left->left == NULL && root->left->right == NULL){
-            return root->left->val + CountLeftLeaves(root->right);
+            return root->left->val + sumOfLeftLeaves(root->right);
         }
-        return CountLeftLeaves(root->left) + CountLeftLeaves(root->right);
-    }
-    
-    int sumOfLeftLeaves(TreeNode* root) {
-        return CountLeftLeaves(root);
+        // else we will traverse both sides          
+        return sumOfLeftLeaves(root->left) + sumOfLeftLeaves(root->right);
     }
 };
