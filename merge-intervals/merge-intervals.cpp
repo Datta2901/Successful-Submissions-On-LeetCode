@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        vector<vector<int> > answer;
+        vector<vector<int> >answer;
         int n = intervals.size();
         sort(intervals.begin(),intervals.end());
         int start = intervals[0][0],end = intervals[0][1];
