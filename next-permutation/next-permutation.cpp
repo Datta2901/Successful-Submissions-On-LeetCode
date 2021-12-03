@@ -1,19 +1,24 @@
 class Solution {
 public:
-    void nextPermutation(vector<int>& numbers) {
-        //         using stl
-        // std::next_permutation(nums.begin(),nums.end());
-        int i = numbers.size() - 2;
-        while (i >= 0 && numbers[i + 1] <= numbers[i]) {
-            i--;
-        }
-        if (i >= 0) {
-            int j = numbers.size() - 1;
-            while (numbers[j] <= numbers[i]) {
-                j--;
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        int IncreasingIndex = -1;
+        int NextGreaterIndex = 0;
+        for(int i = n - 2; i >= 0; i--){
+            if(nums[i] < nums[i + 1]){
+                IncreasingIndex = i;
+                break;
             }
-            swap(numbers[i],numbers[j]);
         }
-        reverse(numbers.begin() + i + 1,numbers.end());
+        if(IncreasingIndex >= 0){
+            for(int i = n - 1; i > IncreasingIndex; i--){
+                if(nums[IncreasingIndex] < nums[i]){
+                    NextGreaterIndex = i;
+                    break;
+                }
+            }
+            swap(nums[NextGreaterIndex],nums[IncreasingIndex]);
         }
+        reverse(nums.begin() + IncreasingIndex + 1,nums.end());
+    }
 };
