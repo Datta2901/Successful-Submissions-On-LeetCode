@@ -5,17 +5,19 @@ public:
             return 0;
         }
         int n = nums.size();
-        int minProduct = nums[0],maxProduct = nums[0];
-        int answer = nums[0];
-        for(int i = 1; i < n; i++){
-            int curr = nums[i];
-            if(nums[i] < 0){
-                swap(minProduct,maxProduct);
+        int maxi = nums[0];
+        int prefix = 1;
+        int suffix = 1;
+        for(int i = 0; i < n; i++){
+            if(prefix == 0){
+                prefix = 1;
+            }if(suffix == 0){
+                suffix = 1;
             }
-            maxProduct = max({maxProduct * curr,curr});
-            minProduct = min({minProduct * curr,curr});
-            answer = max(maxProduct,answer);
+            prefix *= nums[i];
+            suffix *= nums[n - i - 1];
+            maxi = max({prefix,suffix,maxi});
         }
-        return answer;
+        return maxi;
     }
 };
