@@ -1,46 +1,55 @@
+class node{
+    public:
+    int x,y,time;
+    node(int _x,int _y,int _time){
+        x = _x;
+        y = _y;
+        time = _time;
+    }
+};
+
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int n = grid.size();
-        int m = grid[0].size();
-        queue<pair<int,int> >rotten;
-        int count = 0,total = 0,days = 0;
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(grid[i][j] != 0){
-                    total += 1;
-                }
+        int m = grid.size();
+        int n = grid[0].size();
+        int TotalOranges = 0;
+        queue<node>track;
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
                 if(grid[i][j] == 2){
-                    rotten.push({i,j}); 
+                    track.push(node(i,j,0));
+                }if(grid[i][j] != 0){
+                    TotalOranges++;
                 }
             }
         }
-        int dx[4] = {0,0,1,-1};
-        int dy[4] = {1,-1,0,0};
-        
-        while(!rotten.empty()){
-            int k = rotten.size();
-            count += k;
-            while(k--){
-                int x = rotten.front().first,y = rotten.front().second;
-                rotten.pop();
-                for(int i = 0; i < 4; i++){
-                    int nx = x + dx[i];
-                    int ny = y + dy[i];
-                    if(nx < 0 || ny < 0 || nx >= n || ny >=m || grid[nx][ny] != 1){
-                        continue;
-                    }
-                    grid[nx][ny] = 2;
-                    rotten.push({nx,ny});
+
+        int dx[4] = {1,-1,0,0};
+        int dy[4] = {0,0,1,-1};  
+        int count = 0;
+        int maxTime = 0;
+        while(!track.empty()){
+            int x = track.front().x;
+            int y = track.front().y;
+            int time = track.front().time;
+            track.pop();
+            maxTime = max(maxTime,time);
+            count++;
+            for(int i = 0; i < 4; i++){
+                int newX = x + dx[i];
+                int newY = y + dy[i];
+                if(newX < 0 || newX >= m || newY < 0 || newY >= n || grid[newX][newY] != 1){
+                    continue;
                 }
-            }
-            if(!rotten.empty()){
-                days += 1;
+                track.push(node(newX,newY,time + 1));
+                grid[newX][newY] = 2;
             }
         }
-        if(total == count){
-            return days;
+
+        if(count == TotalOranges){
+            return maxTime;
         }
         return -1;
-    }
+        }
 };
