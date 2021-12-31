@@ -1,4 +1,12 @@
 class Solution {
+private:
+    string getMultipliedString(string s,int a){
+        string ans = "";
+        for(int i = 0; i < a; i++){
+            ans += s;
+        }
+        return ans;
+    }
 public:
     string decodeString(string s) {
         stack<int> countStack;
@@ -22,14 +30,12 @@ public:
                 number = 0;
             } 
             else {
-                int topMult = countStack.top(); countStack.pop();
-                string topS = wordStack.top(); wordStack.pop();
-                for (int i = 0; i < topMult; i++) {
-                    topS.append(word);
-                }
-               
-                word = topS;
-              
+                int topMult = countStack.top();
+                countStack.pop();
+                string topS = wordStack.top(); 
+                wordStack.pop();
+                topS += getMultipliedString(word,topMult);
+                word = topS; 
             } 
         }
         
