@@ -8,14 +8,16 @@
 // If we neg the max heap we will get minheap
 
 class MedianFinder {
-    priority_queue<int>smaller,larger;
+    // priority_queue<int>smaller,larger;
+    priority_queue<int>smaller;
+    priority_queue<int,vector<int>,greater<int> >larger;
 public:    
     void addNum(int num) {
         smaller.push(num);
-        larger.push(-smaller.top());
+        larger.push(smaller.top());
         smaller.pop();
         if(larger.size() > smaller.size()){
-            smaller.push(-larger.top());
+            smaller.push(larger.top());
             larger.pop();
         }
         
@@ -25,7 +27,7 @@ public:
         if(smaller.size() > larger.size()){
             return smaller.top();
         }
-        return (smaller.top() - larger.top()) / 2.0;
+        return (smaller.top() + larger.top()) / 2.0;
     }
 };
 
