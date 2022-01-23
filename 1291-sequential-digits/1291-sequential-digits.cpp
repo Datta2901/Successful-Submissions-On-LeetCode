@@ -14,9 +14,9 @@ public:
         int dh = log10(high) + 1;
         for(int i = dl; i <= dh; i++){
             for(int j = 0; j < 9; j++){
-                // int num = stoi(digits.substr(j,j + i));
                 if(j + i <= 9){
-                    int num = stoi(getSub(j,j + i,digits));
+                    int num = stoi(digits.substr(j,i));
+                    // int num = stoi(getSub(j,j + i,digits));
                     // cout << num << endl;
                     if(low <= num && num <= high){
                         answer.push_back(num);
