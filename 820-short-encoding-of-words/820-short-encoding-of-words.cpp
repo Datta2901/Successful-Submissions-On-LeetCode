@@ -1,11 +1,11 @@
 class Solution {
-    string getString(int in1,int in2,string s){
-        string ans = "";
-        for(int i = in1; i < in2; i++){
-            ans += s[i];
-        }
-        return ans;
-    }
+    // string getString(int in1,int in2,string s){
+    //     string ans = "";
+    //     for(int i = in1; i < in2; i++){
+    //         ans += s[i];
+    //     }
+    //     return ans;
+    // }
 public:
     int minimumLengthEncoding(vector<string>& words) {
         int n = words.size();
@@ -15,8 +15,9 @@ public:
         }
         for(int i = 0; i < n; i++){
             for(int j = 1; j < words[i].size(); j++){
-                string sub = getString(j,words[i].size(),words[i]);
-                answer.erase(sub);
+                // string sub = getString(j,words[i].size(),words[i]);
+                int m = words[i].size();
+                answer.erase(words[i].substr(j,m));
             }
         }
         int length = 0;
