@@ -22,14 +22,16 @@ public:
         set<int>answer;
         
         for(int bits = 30; bits >= 0; bits--){
-            
-            MaxPowerOf2 = MaxPowerOf2 | (1 << bits);
-            
+            // MaxPowerOf2 = MaxPowerOf2 | (1 << bits)
+            int poww = pow(2,bits);
+            MaxPowerOf2 = MaxPowerOf2 | poww;
+            // cout << MaxPowerOf2 << " ";
             for(int i = 0; i < n; i++){
                 answer.insert((MaxPowerOf2 & nums[i]));
             }
             
-            int newMax = maximum | (1 << bits);
+            // int newMax = maximum | (1 << bits);
+            int newMax = maximum | poww;
             
             for(auto it : answer){
                 if(answer.count(newMax ^ it)){
@@ -40,6 +42,7 @@ public:
             
             answer.clear();
         }
+        // cout << endl;
         return maximum;
     }
 };
