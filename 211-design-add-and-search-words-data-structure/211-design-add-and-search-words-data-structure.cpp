@@ -1,7 +1,7 @@
 class WordDictionary {
-public:
+private:
     unordered_map<int,vector<string> > store;
-    
+        
     bool isEqual(string a,string b){
         int n = a.size();
         for(int i = 0; i < n; i++){
@@ -14,10 +14,7 @@ public:
         return true;
     }
     
-    WordDictionary() {
-        
-    }
-    
+public:  
     void addWord(string word) {
         store[word.size()].push_back(word);
     }
@@ -30,6 +27,7 @@ public:
         }
         return false;
     }
+    
 };
 
 /**
