@@ -23,22 +23,22 @@ public:
         if(root == NULL){
             return NULL;
         }
-        queue<Node*> q;
-        q.push(root);
-        q.push(NULL);
-        while(!q.empty()){
-            Node* node = q.front();
-            q.pop();
-            if(node == NULL && q.empty()){
+        queue<Node*>track;
+        track.push(root);
+        track.push(NULL);
+        while(!track.empty()){
+            Node* node = track.front();
+            track.pop();
+            if(node == NULL && track.empty()){
                 return root;
             }else if(node == NULL){
-                q.push(NULL);
-            }else{
-                node->next = q.front(); 
-                if(node->left != NULL){
-                    q.push(node->left);
-                }if(node->right != NULL){
-                    q.push(node->right);
+                track.push(node);
+            }else if(node){
+                node->next = track.front();
+                if(node->left){
+                    track.push(node->left);
+                }if(node->right){
+                    track.push(node->right);
                 }
             }
         }
