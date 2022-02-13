@@ -13,18 +13,21 @@ public:
             vector<vector<int>> directions = {{1,1}, {0,1},{1,0},{0,-1},{-1,0},{-1, -1},{1, -1},{-1, 1}};
             grid[0][0] = 1;
             while(!queue.empty()){
-                auto curr = queue.front();
-                int x = curr.first, y = curr.second;
-                if( x == row -1 && y == col -1) return grid[x][y];
-                for(auto direction : directions){
-                    int nx = x + direction[0];
-                    int ny = y + direction[1];
-                    if(nx >= 0 && nx < row && ny >= 0 && ny < col && grid[nx][ny] == 0){
-                        queue.push(make_pair(nx,ny));
-                        grid[nx][ny] = grid[x][y] + 1;
+                int size = queue.size();
+                while(size--){
+                    auto curr = queue.front();
+                    int x = curr.first, y = curr.second;
+                    queue.pop();
+                    if( x == row -1 && y == col -1) return grid[x][y];
+                    for(auto direction : directions){
+                        int nx = x + direction[0];
+                        int ny = y + direction[1];
+                        if(nx >= 0 && nx < row && ny >= 0 && ny < col && grid[nx][ny] == 0){
+                            queue.push(make_pair(nx,ny));
+                            grid[nx][ny] = grid[x][y] + 1;
+                        }
                     }
                 }
-                queue.pop();
             }
             return -1;
         }
