@@ -1,21 +1,26 @@
 class Solution {
-public:
-    int target;
-    vector<vector<int>> res;
-    vector<int> tmp;
-    void dfs(vector<vector<int>>& graph, int currNode = 0) {
-        tmp.push_back(currNode);
-        if (currNode == target) 
-            res.push_back(tmp);
-        else 
-            for (int node: graph[currNode]) {
-                dfs(graph, node);
+    vector<vector<int> > answer;
+    void bfs(vector<vector<int> > &graph){
+        queue<vector<int> > store;
+        store.push({0});
+        while(!store.empty()){
+            vector<int> path = store.front();
+            store.pop();
+            int node = path[path.size() - 1];
+            for(auto it : graph[node]){
+                path.push_back(it);
+                if(it == graph.size() - 1){
+                    answer.push_back(path);
+                }else{
+                    store.push(path);
+                }
+                path.pop_back();
+            }
         }
-		tmp.pop_back();
     }
+public:
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        target = graph.size() - 1;
-        dfs(graph);
-        return res;
+        bfs(graph);
+        return answer;
     }
 };
