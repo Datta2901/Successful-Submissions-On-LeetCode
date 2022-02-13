@@ -10,7 +10,7 @@ private:
 
     void getSubsets(int ind,vector<int>&sub,vector<int>&nums){
         if(ind >= nums.size()){
-            // printSubsets(sub);
+            printSubsets(sub);
             answer.push_back(sub);
             return;
         }
