@@ -1,8 +1,5 @@
 class Solution {
     int m,n;
-    void bfs(vector<vector<int> >&grid,int i,int j){
-        
-    }
 public:
     int maxDistance(vector<vector<int>>& grid) {
         m = grid.size();
