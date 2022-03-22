@@ -2,17 +2,15 @@ class Solution {
 public:
     string getSmallestString(int n, int k) {
         string answer = "";
-        int i  = 26;
-        while(k > 0 && i >= 1){ 
-            while(k - i >= 0){
-                if((k - i) + answer.size() + 1 >= n){
-                    answer += 'a' + i - 1;
-                    k -= i;
-                }else{
-                    break;
-                }
+        for(int i = n; i > 0; i--){     
+            int remaining = k - (i - 1);       
+            if(remaining >= 26){
+                answer += 'z';
+                k -= 26;
+            }else{
+                answer += 'a' + remaining - 1;
+                k -= remaining;
             }
-            i--;
         }
         reverse(answer.begin(),answer.end());
         return answer;
