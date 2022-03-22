@@ -12,13 +12,7 @@ public:
                     break;
                 }
             }
-            // if(k - i >= 0 && (k - i) + answer.size() + 1 == n ){
-            //     answer += 'a' + i - 1;
-            //     cerr << answer[answer.size() - 1] << " " << i - 1 << endl;
-            //     k -= i;
-            // }else{
-                i--;
-            // }
+            i--;
         }
         reverse(answer.begin(),answer.end());
         return answer;
