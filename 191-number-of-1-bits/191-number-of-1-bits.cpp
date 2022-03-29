@@ -12,15 +12,27 @@
 //     }
 // };
 
+// class Solution {
+// public:
+//     int hammingWeight(uint32_t n) {
+//         int count = 0;
+//         while(n){
+//             if(n % 2 == 1){
+//                 count += 1;
+//             }
+//             n = n / 2;
+//         }
+//         return count;
+//     }
+// };
+
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
         int count = 0;
         while(n){
-            if(n % 2 == 1){
-                count += 1;
-            }
-            n = n / 2;
+            n = n & (n - 1);
+            count++;
         }
         return count;
     }
