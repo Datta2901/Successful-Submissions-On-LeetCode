@@ -9,12 +9,12 @@ public:
                 open = i;
             }else if(command[i] == ')'){
                 if(i - open == 1){
-                    answer += 'o';
+                    answer += "o";
                 }else{
                     answer += "al";
                 }
             }else if(command[i] == 'G'){
-                answer += 'G';
+                answer += "G";
             }
         }
         return answer;
