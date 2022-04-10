@@ -37,19 +37,33 @@
 //     }
 // };
 
+// class Solution {
+// public:
+//     char findTheDifference(string s, string t) {
+//         char r=0;
+//         int n = s.size();
+//         for(int i = 0; i < n; i++){
+//             r = r ^ s[i]; 
+//             // cout << r << " ";
+//         }
+//         n = t.size();
+//         for(int j = 0; j < n; j++){
+//             r = r ^ t[j];
+//         }
+//         return r;
+//     }
+// };
+
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        char r=0;
-        int n = s.size();
-        for(int i = 0; i < n; i++){
-            r = r ^ s[i]; 
-            // cout << r << " ";
+        char result = 0;
+        for(auto it : s){
+            result ^= it;
         }
-        n = t.size();
-        for(int j = 0; j < n; j++){
-            r = r ^ t[j];
+        for(auto it : t){
+            result ^= it;
         }
-        return r;
+        return result;
     }
 };
