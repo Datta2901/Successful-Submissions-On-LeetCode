@@ -18,20 +18,40 @@ public:
 };
 */
 
+// class Solution {
+//     vector<int>answer;
+//     void pre(Node* root){
+//         if(root == NULL){
+//             return;
+//         }
+//         answer.push_back(root->val);
+//         for(auto it : root->children){
+//             pre(it);
+//         }
+//     }
+// public:
+//     vector<int> preorder(Node* root) {
+//         pre(root);
+//         return answer;
+//     }
+// };
+
+
+
 class Solution {
     vector<int>answer;
-    void pre(Node* root){
-        if(root == NULL){
+    void traverse(Node* root){
+        if(!root){
             return;
         }
         answer.push_back(root->val);
         for(auto it : root->children){
-            pre(it);
+            traverse(it);
         }
     }
 public:
     vector<int> preorder(Node* root) {
-        pre(root);
+        traverse(root);
         return answer;
     }
 };
