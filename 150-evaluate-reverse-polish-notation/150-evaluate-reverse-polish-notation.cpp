@@ -41,8 +41,6 @@ public:
                 }
             }
         }
-        if(!store.empty())
         return store.top();
-        return 0;
     }
 };
