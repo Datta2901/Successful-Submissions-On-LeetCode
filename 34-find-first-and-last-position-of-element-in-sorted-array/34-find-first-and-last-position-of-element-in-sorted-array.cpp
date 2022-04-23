@@ -5,10 +5,10 @@ class Solution {
         int answer = -1;
         while(low <= high){
             int mid = low +(high - low) / 2;
-            if(nums[mid] >= target){
-                if(nums[mid] == target){
-                    answer = mid;
-                }
+            if(nums[mid] == target){
+                answer = mid;
+                high = mid - 1;
+            }else if(nums[mid] > target){
                 high = mid - 1; 
             }else{
                 low = mid + 1;
@@ -23,10 +23,10 @@ class Solution {
         int answer = -1;
         while(low <= high){
             int mid = low +(high - low) / 2;
-            if(nums[mid] <= target){
-                if(nums[mid] == target){
-                    answer = mid;
-                }
+            if(nums[mid] == target){
+                answer = mid;
+                low = mid + 1;
+            }else if(nums[mid] < target){
                 low = mid + 1; 
             }else{
                 high = mid - 1;
