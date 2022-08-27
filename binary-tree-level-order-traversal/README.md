@@ -1,3 +1,4 @@
+[Discussion Post (created on 27/7/2022 at 14:37)](https://leetcode.com/problems/binary-tree-level-order-traversal/discuss/2489469/BFS-or-Queue-or-Easy-Solution-or-C%2B%2B)  
 <h2>102. Binary Tree Level Order Traversal</h2><h3>Medium</h3><hr><div><p>Given the <code>root</code> of a binary tree, return <em>the level order traversal of its nodes' values</em>. (i.e., from left to right, level by level).</p>
 
 <p>&nbsp;</p>
